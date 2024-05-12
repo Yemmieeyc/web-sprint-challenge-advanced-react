@@ -18,7 +18,7 @@ describe('AppFunctional', () => {
     expect(getByText('reset')).toBeInTheDocument()
     expect(getByText('submit')).toBeInTheDocument()
     //test placeholder
-    expect(getByPlaceholderText('type email')).toBeInTheDocument
+    expect(getByPlaceholderText('type email')).toBeInTheDocument()
   })
   test('typing in input field changes its value', () =>{
     const {getByPlaceholderText} = render(<AppFunctional/>)
