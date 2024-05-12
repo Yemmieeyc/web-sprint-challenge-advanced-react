@@ -53,7 +53,7 @@ const [index, setIndex] = useState(initialIndex)
       case 'left' :
         if(x > 0){ 
           nextIndex -= 1} else {
-            setMessage("You Can't go left")
+            setMessage("You can't go left")
           }
         break;
         case 'up' :
