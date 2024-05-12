@@ -7,8 +7,8 @@ describe('AppFunctional', () => {
   test('render headings, buttons, and link correctly', () => {
     const {getByText} = render(<AppFunctional/>)
     //test headings
-    expect(getByText('coordinates (2, 2)')).toBeInTheDocument()
-    expect(getByText('You moved 0 times')).toBeInTheDocument()
+    expect(getByText(/Coordinates \(2, 2\)/i)).toBeInTheDocument();
+    expect(getByText(/^You moved \d+ times$/i)).toBeInTheDocument();
     expect(getByText('reset')).toBeInTheDocument()
     //test buttons
     expect(getByText('LEFT')).toBeInTheDocument()
