@@ -125,7 +125,7 @@ const [index, setIndex] = useState(initialIndex)
     <div id="wrapper" className={props.className}>
       <div className="info">
         <h3 id="coordinates">{getXYMessage(index)}</h3>
-        <h3 id="steps">You moved {steps} time</h3>
+        <h3 id="steps">You moved {steps} times </h3>
       </div>
       <div id="grid">
         {
