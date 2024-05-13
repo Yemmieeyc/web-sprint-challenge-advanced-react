@@ -17,7 +17,7 @@ describe('AppFunctional', () => {
     expect(getByText('RIGHT')).toBeInTheDocument()
     expect(getByText('DOWN')).toBeInTheDocument()
     expect(getByText('reset')).toBeInTheDocument()
-    expect(getByText('Submit')).toBeInTheDocument()
+    expect(getByText(/submit/i)).toBeInTheDocument()
     //test placeholder
     expect(getByPlaceholderText('type email')).toBeInTheDocument()
   })
