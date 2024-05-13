@@ -4,7 +4,7 @@ import React, {useState}from 'react'
 const initialMessage = ''
 const initialEmail = ''
 const initialSteps = 0
-const initialIndex = 4 // the index the "B" is at
+const initialIndex = 5 // the index the "B" is at
 
 
 
@@ -18,11 +18,16 @@ const [email, setEmail] = useState(initialEmail)
 const [steps, setSteps] = useState(initialSteps)
 const [index, setIndex] = useState(initialIndex)
 
+//console.log('index;', index)
   function getXY(idx) {
     // It it not necessary to have a state to track the coordinates.
     // It's enough to know what index the "B" is at, to be able to calculate them.
-    const x = idx % 3;
-    const y = Math.floor(idx / 3);
+    const width = 3 // width of the grid
+    const x = (idx - 1) % width + 1;
+
+    const y = Math.floor((idx - 1) / width) + 1;
+    //console.log('x;', x)
+    //console.log('y;', y)
     return {x, y}
   }
 
@@ -31,7 +36,7 @@ const [index, setIndex] = useState(initialIndex)
     // You can use the `getXY` helper above to obtain the coordinates, and then `getXYMessage`
     // returns the fully constructed string.
     const {x, y} = getXY(idx);
-    return `Coordinates (${x + 1}, ${y + 1})`
+    return `Coordinates (${x}, ${y})`
   }
 
   function reset() {
@@ -51,25 +56,25 @@ const [index, setIndex] = useState(initialIndex)
 
     switch(direction){
       case 'left' :
-        if(x > 0){ 
+        if(x > 1 && x <= 3) {
           nextIndex -= 1} else {
             setMessage("You can't go left")
           }
         break;
-        case 'up' :
-          if(y > 0) {
+      case 'up' :
+          if(y > 1 && y <= 3) {
             nextIndex -= 3} else {
               setMessage("You can't go up")
             }
           break;
-          case 'right' :
-            if(x < 2){
+      case 'right' :
+            if(x < 3 && x > 0){
               nextIndex += 1} else {
                 setMessage("You can't go right")
               }
             break;
-            case 'down' :
-              if(y < 2) {
+      case 'down' :
+              if(y < 3 && y > 0) {
                 nextIndex += 3} else {
                   setMessage("You can't go down")
                 }
@@ -86,8 +91,8 @@ const [index, setIndex] = useState(initialIndex)
     const nextIndex = getNextIndex(direction)
     //setMessage('')
     if(nextIndex !== index){
-    setIndex(nextIndex)
-    setSteps(steps + 1)
+      setIndex(nextIndex)
+      setSteps(steps + 1)
     }
   }
 
@@ -124,7 +129,7 @@ const [index, setIndex] = useState(initialIndex)
       </div>
       <div id="grid">
         {
-          [0, 1, 2, 3, 4, 5, 6, 7, 8].map(idx => (
+          [1, 2, 3, 4, 5, 6, 7, 8, 9].map(idx => (
             <div key={idx} className={`square${idx === index ? ' active' : ''}`}>
               {idx === index ? 'B' : null}
             </div>

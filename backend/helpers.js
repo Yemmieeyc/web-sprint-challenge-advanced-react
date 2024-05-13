@@ -31,10 +31,13 @@ async function buildResponse(req) {
   let message
 
   try {
+    console.log('*'.repeat(22))
+    console.log('req.body:', req.body)
     const validated = await schema.validate(req.body, { stripUnknown: true })
-
+    console.log('validated:', validated)
     const { email, x, y, steps } = validated
     const code = (((x + 1) * (y + 2)) * (steps + 1)) + email.length
+    console.log('code:', code)
 
     if (email === 'foo@bar.baz') {
       message = `foo@bar.baz failure #${code}`
