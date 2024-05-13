@@ -135,10 +135,10 @@ const [index, setIndex] = useState(initialIndex)
         <h3 id="message">{message}</h3>
       </div>
       <div id="keypad">
-        <button id="left" onClick={(evt) => move('left')}>LEFT</button>
-        <button id="up" onClick={(evt) => move('up')}>UP</button>
-        <button id="right" onClick={(evt) => move('right')}>RIGHT</button>
-        <button id="down" onClick={(evt) => move('down')}>DOWN</button>
+        <button id="left" onClick={() => move('left')}>LEFT</button>
+        <button id="up" onClick={() => move('up')}>UP</button>
+        <button id="right" onClick={() => move('right')}>RIGHT</button>
+        <button id="down" onClick={() => move('down')}>DOWN</button>
         <button id="reset" onClick={reset}>reset</button>
       </div>
       <form onSubmit={onSubmit}>

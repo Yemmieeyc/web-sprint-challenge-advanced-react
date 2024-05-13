@@ -7,6 +7,7 @@ import AppFunctional from "./AppFunctional"
 describe('AppFunctional', () => {
   test('render headings, buttons, and link correctly', () => {
     const {getByText} = render(<AppFunctional/>)
+     const {getByPlaceholderText} = render(<AppFunctional/>)
     //test headings
     expect(getByText(/Coordinates \(2, 2\)/i)).toBeInTheDocument();
     expect(getByText(/^You moved \d+ times$/i)).toBeInTheDocument();
@@ -17,8 +18,9 @@ describe('AppFunctional', () => {
     expect(getByText('RIGHT')).toBeInTheDocument()
     expect(getByText('DOWN')).toBeInTheDocument()
     expect(getByText('reset')).toBeInTheDocument()
-    expect(getByText(/submit/i)).toBeInTheDocument()
+    expect(getByText('submit')).toBeInTheDocument()
     //test placeholder
+    
     expect(getByPlaceholderText('type email')).toBeInTheDocument()
   })
   test('typing in input field changes its value', () =>{
