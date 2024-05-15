@@ -144,7 +144,7 @@ const [index, setIndex] = useState(initialIndex)
       </div>
       <form onSubmit={onSubmit}>
         <input id="email" type="email" placeholder="type email" onChange={onChange}value={email}></input>
-        <input id="submit" type="submit"></input>
+        <input id="submit" data-testid= "submit" type="submit"></input>
       </form>
     </div>
   )

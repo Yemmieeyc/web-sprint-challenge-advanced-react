@@ -6,7 +6,7 @@ import AppFunctional from "./AppFunctional"
 
 describe('AppFunctional', () => {
   test('render headings, buttons, and link correctly', () => {
-    const {getByText, getByPlaceholderText} = render(<AppFunctional/>)
+    const {getByText, getByPlaceholderText, getByTestId} = render(<AppFunctional/>)
      //const {getByPlaceholderText} = render(<AppFunctional/>)
     //test headings
     expect(getByText (/Coordinates \(2, 2\)/i)).toBeInTheDocument();
@@ -18,6 +18,10 @@ describe('AppFunctional', () => {
     expect(getByText('RIGHT')).toBeInTheDocument()
     expect(getByText('DOWN')).toBeInTheDocument()
     expect(getByText('reset')).toBeInTheDocument()
+
+    const submitButton = getByTestId('submit')
+    expect(submitButton).toBeInTheDocument
+    
     
    
     //test placeholder
@@ -25,12 +29,12 @@ describe('AppFunctional', () => {
     expect(getByPlaceholderText('type email')).toBeInTheDocument()
   })
   test('typing in input field changes its value', () =>{
-    const {getByPlaceholderText, getByText} = render(<AppFunctional/>)
+    const {getByPlaceholderText} = render(<AppFunctional/>)
     const emailInput = getByPlaceholderText('type email')
     
     fireEvent.change(emailInput, {target: {value: 'test@example.com'}})
      expect(emailInput.value).toBe('test@example.com')
-     expect(getByText('Submit')).toBeInTheDocument()
+     
   })
 })
 
