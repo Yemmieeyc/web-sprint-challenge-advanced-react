@@ -114,9 +114,12 @@ const [index, setIndex] = useState(initialIndex)
       setMessage(res.data.message)
       setEmail('')})
       .catch(err => setMessage(err.response.data.message))
-
- 
   }
+
+  // jest.mock('axios', () => ({
+  //     post: jest.fn(() => Promise.resolve({data:{message: 'lady win #31'}
+  //   })),
+  //    }))
   return (
     <div id="wrapper" className={props.className}>
       <div className="info">
