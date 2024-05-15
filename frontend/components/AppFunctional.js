@@ -1,4 +1,5 @@
 import React, {useState}from 'react'
+import axios from 'axios'
 
 // Suggested initial states
 const initialMessage = ''
@@ -17,6 +18,7 @@ const [message, setMessage] = useState(initialMessage)
 const [email, setEmail] = useState(initialEmail)
 const [steps, setSteps] = useState(initialSteps)
 const [index, setIndex] = useState(initialIndex)
+
 
 //console.log('index;', index)
   function getXY(idx) {
@@ -107,25 +109,32 @@ const [index, setIndex] = useState(initialIndex)
     
     // Use a POST request to send a payload to the server.
     evt.preventDefault()
-    fetch(URL, {
-      method:'POST',
-      headers: {
-        'content-Type': 'application/json'
-      },
-      body: JSON.stringify({email, steps, x, y })
-    })
-    .then (res => res.json())
+    axios.post(URL, {email, steps, x, y })
     .then(res => {
-      setMessage(res.message)
-      setEmail('')
-    })
-    .catch(err => console.log(err.message))
+      setMessage(res.data.message)
+      setEmail('')})
+      .catch(err => setMessage(err.response.data.message))
+
+
+    // fetch(URL, {
+    //   method:'POST',
+    //   headers: {
+    //     'content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify({email, steps, x, y })
+    // })
+    // .then (res => res.json())
+    // .then(res => {
+    //   setMessage(res.message)
+    //   setEmail('')
+    // })
+    // .catch(err => console.log(err.message))
   }
   return (
     <div id="wrapper" className={props.className}>
       <div className="info">
         <h3 id="coordinates">{getXYMessage(index)}</h3>
-        <h3 id="steps">You moved {steps} times </h3>
+        <h3 id="steps">You moved {steps == 1 ? `${steps} time` : `${steps} times`}</h3>
       </div>
       <div id="grid">
         {
