@@ -18,19 +18,19 @@ describe('AppFunctional', () => {
     expect(getByText('RIGHT')).toBeInTheDocument()
     expect(getByText('DOWN')).toBeInTheDocument()
     expect(getByText('reset')).toBeInTheDocument()
-    expect(getByText('submit')).toBeInTheDocument()
+    
+   
     //test placeholder
     
     expect(getByPlaceholderText('type email')).toBeInTheDocument()
   })
   test('typing in input field changes its value', () =>{
-    const {getByPlaceholderText} = render(<AppFunctional/>)
+    const {getByPlaceholderText, getByText} = render(<AppFunctional/>)
     const emailInput = getByPlaceholderText('type email')
     
     fireEvent.change(emailInput, {target: {value: 'test@example.com'}})
      expect(emailInput.value).toBe('test@example.com')
+     expect(getByText('Submit')).toBeInTheDocument()
   })
 })
-// test('sanity', () => {
-//   expect(true).toBe(false)
-// })
+

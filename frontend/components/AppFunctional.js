@@ -115,20 +115,7 @@ const [index, setIndex] = useState(initialIndex)
       setEmail('')})
       .catch(err => setMessage(err.response.data.message))
 
-
-    // fetch(URL, {
-    //   method:'POST',
-    //   headers: {
-    //     'content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({email, steps, x, y })
-    // })
-    // .then (res => res.json())
-    // .then(res => {
-    //   setMessage(res.message)
-    //   setEmail('')
-    // })
-    // .catch(err => console.log(err.message))
+ 
   }
   return (
     <div id="wrapper" className={props.className}>
